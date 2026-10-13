@@ -1,0 +1,216 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Запобігає горизонтальній прокрутці */
+    box-sizing: border-box; /* Включає padding та border в загальну ширину та висоту елемента */
+}
+
+body {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+.content-container {
+    width: 100%;
+    min-height: 100%; /* Гарантує, що він займає щонайменше 100% висоти, дозволяючи йому зростати */
+    padding: 16px; /* Додаємо деякий типовий відступ */
+    box-sizing: border-box;
+}
+
+.lab-text {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 20px; /* Додаємо простір внизу для прокрутки */
+}
+
+h3 {
+    color: #4CAF50;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.report-btn {
+    background: #4CAF50;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 22px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.report-btn:hover {
+    background: #43A047;
+    transform: translateY(-2px);
+}
+
+.report-btn:active {
+    transform: scale(0.97);
+}
+input, select, button {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.result-box {
+    display: none;
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #E8F5E9;
+    font-weight: bold;
+    color: #2E7D32;
+    animation: fadeIn 0.4s ease-in-out;
+    white-space: pre-line;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+/* ... старий CSS ... */
+
+/* Стилі для Лаб 3 */
+.calc-box {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    margin-bottom: 15px;
+}
+.calc-box label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #495057;
+}
+.calc-btn {
+    width: 100%;
+    margin-top: 15px;
+    background: linear-gradient(45deg, #ff9800, #f57c00);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.calc-btn:active {
+    transform: scale(0.98);
+}
+/* ===== LAB 4 NETWORK DESIGN ===== */
+
+.network-lab {
+    text-align: center;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.lab-title {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.lab-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    animation: slideUp 0.5s ease;
+}
+
+.card input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.card input:focus {
+    border-color: #2196F3;
+    outline: none;
+    box-shadow: 0 0 5px rgba(33,150,243,0.5);
+}
+
+.btn {
+    width: 95%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.03);
+}
+
+.green { background: #4CAF50; color: white; }
+.blue  { background: #2196F3; color: white; }
+.red   { background: #f44336; color: white; }
+.gray  { background: #9E9E9E; color: white; }
+
+.inline-group {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+/* Це друге визначення .result-box, яке я залишаю як є, але видалю duplicate display:none */
+/* Оновлено: об'єднано з першим визначенням result-box вище */
+
+/* Animations */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes slideUp {
+    from {transform: translateY(20px); opacity:0;}
+    to {transform: translateY(0); opacity:1;}
+}
+#logic-result {
+    animation: slideUp 0.6s ease-in-out;
+}
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background: #eee;
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #4CAF50, #2E7D32);
+    transition: width 0.2s ease;
+}

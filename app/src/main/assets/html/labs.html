@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labs</title>
+    <link rel="stylesheet" href="file:///android_asset/css/style.css">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden; /* Запобігає горизонтальній прокрутці */
+            box-sizing: border-box; /* Включає padding та border в загальну ширину та висоту елемента */
+        }
+        .content-container {
+            width: 100%;
+            min-height: 100%; /* Гарантує, що він займає щонайменше 100% висоти, дозволяючи йому зростати */
+            padding: 16px; /* Додаємо деякий типовий відступ */
+            box-sizing: border-box;
+        }
+        /* Забезпечуємо, щоб окремий вміст лаб також дотримувався меж */
+        .lab-text {
+            width: 100%;
+            box-sizing: border-box;
+            padding-bottom: 20px; /* Додаємо простір внизу для прокрутки */
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-container">
+
+    <div id="content-1" class="lab-text">
+        <h3>Тема: Породжуючі патерни (Фабрика)</h3>
+        <p>Оберіть тип фізичної задачі та введіть дані:</p>
+        <select id="phy-type" onchange="updatePhysicsInputs()">
+            <option value="UNIFORM">Рівномірний рух (S, t)</option>
+            <option value="ACCELERATED">Рівноприскорений (v0, a, t)</option>
+            <option value="DENSITY">Густина (m, V, T, P)</option>
+        </select>
+        <input id="p1" type="number" placeholder="Відстань (S)">
+        <input id="p2" type="number" placeholder="Час (t)">
+        <input id="p3" type="number" placeholder="Параметр 3" style="display:none">
+        <input id="p4" type="number" placeholder="Параметр 4" style="display:none">
+        <button onclick="calculatePhysics()" style="margin-top: 15px; background: #2196F3; color: white;">Обчислити</button>
+        <div id="phy-result" class="result-box"></div>
+        <div class="report-container">
+            <button class="report-btn" onclick="openReport('https://docs.google.com/document/d/1ewLwTXSzX7F5mmajEeDY6IqrJdKSPJes1xrbvS5-CY4/edit?usp=sharing')">📄 Звіт Лаб 1</button>
+        </div>
+    </div>
+
+    <div id="content-2" class="lab-text">
+        <h3>Тема: Патерн Стратегія</h3>
+        <p>Калькулятор ділення:</p>
+        <input id="a" placeholder="Число A" type="text">
+        <input id="b" placeholder="Число B" type="text">
+        <select id="type">
+            <option>Дійсні числа</option>
+            <option>Звичайні дроби</option>
+            <option>Комплексні числа</option>
+        </select>
+        <button onclick="calculate()" style="margin-top: 15px; background: #4CAF50; color: white;">Обчислити</button>
+        <div id="result" class="result-box"></div>
+        <div class="report-container">
+            <button class="report-btn" onclick="openReport('https://docs.google.com/document/d/1E3mx3GxvZ-ANHoINnRB-7FmVJYwHN_i7M8ox0dHab8I/edit?usp=sharing')">📄 Звіт Лаб 2</button>
+        </div>
+    </div>
+
+    <div id="content-3" class="lab-text">
+        <h3>🏗️ Лаб 3: Патерн Bridge (Міст)</h3>
+        <p>Калькулятор матеріалів для даху:</p>
+
+        <div class="calc-box">
+            <label>🏠 Тип даху:</label>
+            <select id="roof-type">
+                <option value="SINGLE">Односхилий</option>
+                <option value="GABLE">Двосхилий</option>
+                <option value="HIP">Чотирисхилий</option>
+            </select>
+
+            <label>🧱 Матеріал:</label>
+            <select id="material-type">
+                <option value="ROLL">Рулонний</option>
+                <option value="TILE">Черепиця</option>
+                <option value="SHEET">Шифер</option>
+                <option value="MASTIC">Мастика</option>
+                <option value="FILM">Плівка</option>
+            </select>
+
+            <hr style="margin: 10px 0; border: 0; border-top: 1px dashed #ccc;">
+
+            <input id="r-width" type="number" placeholder="Ширина будинку (м)">
+            <input id="r-length" type="number" placeholder="Довжина будинку (м)">
+            <input id="r-height" type="number" placeholder="Висота даху (м)">
+
+            <button onclick="calculateRoof()" class="calc-btn">🧮 Розрахувати</button>
+        </div>
+
+        <div id="roof-result" class="result-box"></div>
+
+        <div class="report-container">
+            <button class="report-btn" onclick="openReport('https://docs.google.com/document/d/1E3mx3GxvZ-ANHoINnRB-7FmVJYwHN_i7M8ox0dHab8I/edit?usp=sharing')">📄 Звіт Лаб 3</button>
+        </div>
+    </div>
+
+    <div id="content-4" class="lab-text network-lab">
+        <h2 class="lab-title">   Лабораторна №4</h2>
+        <p class="lab-subtitle">Мережне програмування (TCP клієнт-сервер)</p>
+
+        <div class="card">
+            <input id="noteText" type="text" placeholder="Введіть текст нотатки">
+
+            <button class="btn green" onclick="addNote()">
+                ➕ Додати нотатку
+            </button>
+
+            <button class="btn blue" onclick="getNotes()">
+                📋 Показати всі нотатки
+            </button>
+
+            <div class="inline-group">
+                <input id="deleteIndex" type="number" placeholder="Номер нотатки">
+                <button class="btn red" onclick="deleteNote()">❌ Видалити</button>
+            </div>
+
+            <button class="btn gray" onclick="clearNotes()">
+                🗑 Очистити всі нотатки
+            </button>
+        </div>
+
+        <div id="network-result" class="result-box"></div>
+
+        <div class="report-container" style="margin-top: 20px;">
+            <button class="report-btn" onclick="openReport('https://docs.google.com/document/d/1EsTLFfZdMhe2_F2zvXuyF_fbI5jyPiQbEdKkksYdgAw/edit?usp=sharing')">📄 Звіт Лаб 4</button>
+        </div>
+    </div>
+
+    <div id="content-5" class="lab-text">
+        <h3>🧠 Лабораторна №5: Логічний вивід (Лицарі, Брехуни та Звичайні Люди)</h3>
+        <p>Перед нами троє людей – А, В і С. Один з них – лицар (він завжди говорить правду), другий – брехун (він завжди бреше) і третій – звичайна людина (яка може сказати як правду, так і неправду). Кожен виконує одну з ролей.</p>
+        <p><b>Висловлювання:</b></p>
+        <ul>
+            <li><b>А каже:</b> <span style="font-style: italic;">"Я звичайна людина."</span></li>
+            <li><b>В каже:</b> <span style="font-style: italic;">"Це правда."</span> (Мається на увазі заява А)</li>
+            <li><b>С каже:</b> <span style="font-style: italic;">"Я не є звичайною людиною."</span></li>
+        </ul>
+        <p>Визначте, хто є Лицарем, Брехуном та Звичайною людиною.</p>
+
+        <div style="margin-bottom: 10px;">
+            <b>Особа А:</b>
+            <input id="logic-a" type="text" placeholder="Наприклад: Я звичайна людина">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <b>Особа В:</b>
+            <input id="logic-b" type="text" placeholder="Наприклад: Це правда">
+        </div>
+        <div style="margin-bottom: 15px;">
+            <b>Особа С:</b>
+            <input id="logic-c" type="text" placeholder="Наприклад: Я не є звичайною людиною">
+        </div>
+
+            <button class="btn green" onclick="solveLab5()">
+                ▶ Показати рішення
+            </button>
+        </div>
+        <button class="btn blue" onclick="startVoiceInputLab5()">
+            🎤 Голосовий ввід
+        </button>
+        <div id="lab5-result" class="result-box" style="max-height: 250px; overflow-y: auto; margin-bottom: 20px;"></div>
+    </div>
+
+    <div id="content-6" class="lab-text">
+        <h3>📝 Лаб 6 — Багатопоточність (Порівняння файлів)</h3>
+        <div class="card">
+            <button onclick="chooseFile(1)" class="btn gray">📂 Обрати Файл 1</button>
+            <div id="file1-name" style="margin-bottom: 10px; font-size: 14px;">Файл 1 не обрано</div>
+
+            <button onclick="chooseFile(2)" class="btn gray">📂 Обрати Файл 2</button>
+            <div id="file2-name" style="margin-bottom: 15px; font-size: 14px;">Файл 2 не обрано</div>
+
+            <button class="btn green" onclick="startCompare(false)">
+                ▶ Послідовне порівняння
+            </button>
+
+            <button class="btn blue" onclick="startCompare(true)">
+                ⚡ Багатопотокове порівняння
+            </button>
+
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+
+            <div id="compare-result" class="result-box"></div>
+
+            <div class="report-container" style="margin-top: 20px;">
+                <button class="report-btn" onclick="openReport('YOUR_LINK_HERE')">📄 Звіт Лаб 6</button>
+            </div>
+        </div>
+    </div>
+    <div id="content-7" class="lab-text"><h3>Тема: Фінальний проект</h3></div>
+
+</div>
+
+<script src="file:///android_asset/js/script.js"></script>
+
+</body>
+</html>

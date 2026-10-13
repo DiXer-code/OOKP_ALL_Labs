@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextViewVariantsStyle" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/rubik_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textVariantsColor</item>
+    </style>
+
+<!--    <style name="TextViewVariantsStyle.BaseText">-->
+<!--        <item name="android:fontFamily">@font/rubik_regular</item>-->
+<!--        <item name="android:textSize">16sp</item>-->
+<!--        <item name="android:textColor">@color/textVariantsColor</item>-->
+<!--    </style>-->
+<!--    <style name="TextViewVariantsStyle.BaseText.Header1">-->
+<!--        <item name="android:textSize">24sp</item>-->
+<!--    </style>-->
+
+<!--    <style name="TextViewVariantsStyle.BaseText.Header2">-->
+<!--        <item name="android:textSize">21sp</item>-->
+<!--    </style>-->
+    <style name="AnswerContainerStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/shape_rounded_containers</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="AnswerNumberStyle">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textVariantsColor</item>
+        <item name="android:background">@drawable/shape_rounded_variants</item>
+    </style>
+
+</resources>
